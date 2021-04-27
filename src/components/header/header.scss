@@ -1,0 +1,45 @@
+.header {
+  padding: 20px 0;
+  box-shadow: 0 5px 9px 0 rgba(255, 255, 255, 0.4);
+
+  &__content {
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 40%;
+      margin: 0 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      &.main-menu {
+
+        li {
+          position: relative;
+          box-sizing: border-box;
+          display: inline-block;
+
+          ul.sub-menu {
+            box-sizing: border-box;
+            width: 180px;
+            padding: 5px 10px;
+            background: #222;
+            border: 1px solid #fff;
+            display: none;
+            transition: all 0.5s ease-in-out;
+            position: absolute;
+            top: 100%;
+            left: 0;
+          }
+
+          &:hover {
+
+            ul.sub-menu {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
