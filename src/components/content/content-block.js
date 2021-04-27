@@ -2,12 +2,20 @@ import React from "react";
 import Paginator from "../paginator";
 import ItemList from "../item-list";
 
-const ContentBlock = ({path, state, getData}) => {
+const ContentBlock = ({path, state, getData, localeAuth}) => {
 
     const {data, page, search, total_pages} = state;
 
     const isEmpty = data.length !== 0 ?
         <>
+            <button
+                onClick={() => {
+                    localStorage.setItem('auth', 'false');
+                    localeAuth('false');
+                }}
+            >
+                Log out
+            </button>
             <Paginator page={page}
                        search={search}
                        total_pages={total_pages}

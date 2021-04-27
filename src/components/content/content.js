@@ -4,7 +4,7 @@ import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 import ContentBlock from "./content-block";
 
-const Content = ({path, datas, title, getData}) => {
+const Content = ({path, datas, title, getData, localeAuth}) => {
 
     const {loading, error} = datas;
 
@@ -23,9 +23,12 @@ const Content = ({path, datas, title, getData}) => {
     const isLoading = loading ? <Spinner /> : null;
     const isError = error ? <ErrorIndicator /> : null;
     const content = !(loading || error) ?
-        <ContentBlock path={path}
-                      state={datas}
-                      getData={getData} /> :
+        <ContentBlock
+            path={path}
+            state={datas}
+            getData={getData}
+            localeAuth={localeAuth} 
+        /> :
         null;
 
     return (

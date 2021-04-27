@@ -1,10 +1,32 @@
 import "./app.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../header";
 import {Route, Switch} from "react-router-dom";
 import {PopularMoviePage, TopMoviePage, PopularTvPage, TopTvPage, DetailPage} from "../pages";
+import { connect } from "react-redux";
+import { localeAuth } from '../../reducer/auth-reducer'
 
-const App = () => {
+const App = ({auth: {auth}, localeAuth}) => {
+    console.log(auth);
+
+    useEffect(() => {
+        const value = localStorage.getItem('auth');
+        if(value !== null) {
+            localeAuth(value);
+        }
+    }, []);
+
+    if(auth === 'false') {
+        return (
+            <div>
+                <h2>You not authoraized</h2>
+                <button onClick={() => {
+                    localStorage.setItem('auth', 'true');
+                    localeAuth('true');
+                }}>Auth</button>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -26,4 +48,10 @@ const App = () => {
     )
 };
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps, {localeAuth})(App);
