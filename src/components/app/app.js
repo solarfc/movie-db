@@ -16,14 +16,14 @@ const App = ({auth: {auth}, localeAuth}) => {
         }
     }, []);
 
-    if(auth === 'true') {
+    if(auth === 'false') {
         return (
             <div>
                 <h2>You not authoraized</h2>
                 <button onClick={() => {
-                    localStorage.setItem('auth', 'false');
-                    localeAuth('false');
-                }}>Click Me</button>
+                    localStorage.setItem('auth', 'true');
+                    localeAuth('true');
+                }}>Auth</button>
             </div>
         )
     }
