@@ -23,7 +23,7 @@ const App = ({auth: {auth}, localeAuth}) => {
                 <button onClick={() => {
                     localStorage.setItem('auth', 'true');
                     localeAuth('true');
-                }}>Auth</button>
+                }}>Log In</button>
             </div>
         )
     }
