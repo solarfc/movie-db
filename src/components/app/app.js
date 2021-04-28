@@ -11,8 +11,9 @@ const App = ({auth: {auth}, localeAuth}) => {
 
     useEffect(() => {
         const value = localStorage.getItem('auth');
-        if(value !== null) {
+        if(value === null) {
             localeAuth(value);
+            console.log('тут должно быть !==')
         }
     }, []);
 
